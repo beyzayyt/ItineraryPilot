@@ -76,6 +76,12 @@ class HomeViewModel @Inject constructor(
                         error.message?.contains("429", ignoreCase = true) == true -> {
                             "Servis şu an yoğun. Lütfen birkaç dakika bekleyip tekrar deneyin."
                         }
+                        error.message?.contains("503", ignoreCase = true) == true ||
+                        error.message?.contains("502", ignoreCase = true) == true ||
+                        error.message?.contains("UNAVAILABLE", ignoreCase = true) == true ||
+                        error.message?.contains("high demand", ignoreCase = true) == true -> {
+                            "AI servisi şu an yoğun. Lütfen biraz bekleyip tekrar deneyin."
+                        }
                         error.message?.contains("401", ignoreCase = true) == true ||
                         error.message?.contains("403", ignoreCase = true) == true -> {
                             "Servis erişimi reddedildi. Lütfen daha sonra tekrar deneyin."

@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -24,14 +25,19 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
 
-        val props = Properties().apply {
-            rootProject.file("local.properties").takeIf { it.exists() }?.inputStream()?.use(::load)
-        }
-        val geminiApiKey = props.getProperty("GEMINI_API_KEY") ?: ""
-        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")    }
+    val localProps = Properties().apply {
+        rootProject.file("local.properties").takeIf { it.exists() }?.inputStream()?.use(::load)
+    }
 
     buildTypes {
+        debug {
+            buildConfigField(
+                "String", "APP_CHECK_DEBUG_TOKEN",
+                "\"${localProps.getProperty("APP_CHECK_DEBUG_TOKEN", "")}\""
+            )
+        }
         release {
             isMinifyEnabled = true
             isShrinkResources = true
@@ -72,6 +78,10 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.appcheck.playintegrity)
+    debugImplementation(libs.firebase.appcheck.debug)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
