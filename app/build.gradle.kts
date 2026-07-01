@@ -10,7 +10,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.itinerarypilot"
+    namespace = "com.beyzayyt.itinerarypilot"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -18,7 +18,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.itinerarypilot"
+        applicationId = "com.beyzayyt.itinerarypilot"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

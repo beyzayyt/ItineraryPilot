@@ -1,4 +1,4 @@
-package com.example.itinerarypilot
+package com.beyzayyt.itinerarypilot
 
 import org.junit.Test
 
