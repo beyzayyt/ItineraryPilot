@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">ItineraryPilot</string>
+
+    <!-- Home Screen -->
+    <string name="home_title">✈️ Itinerary Pilot</string>
+    <string name="home_subtitle">Plan your perfect trip with AI</string>
+    <string name="label_where_going">Where are you going?</string>
+    <string name="hint_city">Rome, Tokyo, Paris…</string>
+    <string name="label_trip_duration">Trip duration</string>
+    <string name="label_day">day</string>
+    <string name="label_days">days</string>
+    <string name="label_1_day">1 day</string>
+    <string name="label_14_days">14 days</string>
+    <string name="label_your_interests">Your interests</string>
+    <string name="label_optional">optional</string>
+    <string name="btn_generate_itinerary">✈️  Generate Itinerary</string>
+    <string name="msg_generating_plan">Generating your plan…</string>
+
+    <!-- Itinerary Screen -->
+    <string name="msg_planning_trip">Planning your trip…</string>
+    <string name="msg_no_itinerary">No itinerary found.</string>
+    <string name="label_day_number">Day %d</string>
+    <string name="label_day_trip">%d-day trip</string>
+    <string name="label_places">places</string>
+    <string name="btn_show_less">Show less</string>
+    <string name="label_more_places">+ %d more places</string>
+    <string name="label_travel_tips">💡 Travel Tips</string>
+    <string name="label_duration_min">⏱ %d min</string>
+    <!-- Interest chips -->
+    <string name="interest_food">Food &amp; Dining</string>
+    <string name="interest_history">History &amp; Culture</string>
+    <string name="interest_museum">Museums &amp; Art</string>
+    <string name="interest_nightlife">Nightlife</string>
+    <string name="interest_hidden_gems">Hidden Gems</string>
 </resources>

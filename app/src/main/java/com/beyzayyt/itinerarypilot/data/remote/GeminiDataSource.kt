@@ -3,6 +3,7 @@ package com.beyzayyt.itinerarypilot.data.remote
 import com.beyzayyt.itinerarypilot.BuildConfig
 import com.beyzayyt.itinerarypilot.data.remote.model.ItineraryResponse
 import com.beyzayyt.itinerarypilot.data.remote.model.toDomain
+import com.beyzayyt.itinerarypilot.domain.model.Interest
 import com.beyzayyt.itinerarypilot.domain.model.Itinerary
 import com.beyzayyt.itinerarypilot.domain.model.ItineraryRequest
 import com.google.firebase.appcheck.FirebaseAppCheck
@@ -10,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
@@ -56,7 +58,9 @@ class GeminiDataSource @Inject constructor() {
             }
         }.toString()
 
-        val appCheckToken = runCatching { getAppCheckToken() }.getOrElse { "" }
+        val appCheckToken = withTimeoutOrNull(5_000L) {
+            runCatching { getAppCheckToken() }.getOrElse { "" }
+        } ?: ""
 
         val httpRequest = Request.Builder()
             .url(proxyUrl)

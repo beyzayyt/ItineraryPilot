@@ -37,6 +37,10 @@ android {
                 "String", "APP_CHECK_DEBUG_TOKEN",
                 "\"${localProps.getProperty("APP_CHECK_DEBUG_TOKEN", "")}\""
             )
+            buildConfigField(
+                "String", "UNSPLASH_ACCESS_KEY",
+                "\"${localProps.getProperty("UNSPLASH_ACCESS_KEY", "")}\""
+            )
         }
         release {
             isMinifyEnabled = true
@@ -44,6 +48,10 @@ android {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
+            )
+            buildConfigField(
+                "String", "UNSPLASH_ACCESS_KEY",
+                "\"${localProps.getProperty("UNSPLASH_ACCESS_KEY", "")}\""
             )
         }
     }
@@ -66,6 +74,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.material.icons.extended)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
@@ -73,6 +82,7 @@ dependencies {
 
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.okhttp)
     implementation(libs.maps.compose)
     implementation(libs.play.services.maps)
@@ -82,6 +92,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.appcheck.playintegrity)
     debugImplementation(libs.firebase.appcheck.debug)
+    implementation(libs.coil.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
